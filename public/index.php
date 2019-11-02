@@ -5,6 +5,7 @@ use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 use FDCimportModule;
 
+
 require dirname(__DIR__).'/config/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
@@ -28,3 +29,4 @@ $response->send();
 $kernel->terminate($request, $response);
 
 include "../FDCimportModule/test.php";
+include "../FDCimportModule/fileDownload.php";
