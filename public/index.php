@@ -4,6 +4,7 @@ use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
+
 require dirname(__DIR__).'/config/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
@@ -25,3 +26,9 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+
+include "../FDCimportModule/test.php";
+//COMMENT LINE BELOW IF YOU DONT WANT TO DOWNLOAD ZIP//
+    include "../FDCimportModule/fileDownload.php";
+//---------------------------------------------------//
