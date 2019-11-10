@@ -3,9 +3,9 @@ $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zi
 $zip_file = "../FDCimportModule/file.zip";
 $extractPath = "../FDCimportModule/files";
 echo"Downloading Zip file...</br>";
+if (!file_exists($extractPath)) {
 
 $zip_resource = fopen($zip_file, "w");
-
 $ch_start = curl_init();
 curl_setopt($ch_start, CURLOPT_URL, $url);
 curl_setopt($ch_start, CURLOPT_FAILONERROR, true);
@@ -40,3 +40,8 @@ $zip->close();
 echo"Zip extracted successfuly</br>";
 unlink($zip_file);
 echo"Zip file deleted";
+}
+else{
+    echo"folder already exists";
+
+}
