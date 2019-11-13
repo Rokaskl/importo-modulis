@@ -11,15 +11,9 @@ class Food
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $fdc_id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -60,18 +54,6 @@ class Food
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getFdcId(): ?int
-    {
-        return $this->fdc_id;
-    }
-
-    public function setFdcId(int $fdc_id): self
-    {
-        $this->fdc_id = $fdc_id;
-
-        return $this;
     }
 
     public function getFoodClass(): ?string

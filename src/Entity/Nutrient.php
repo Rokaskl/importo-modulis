@@ -11,7 +11,6 @@ class Nutrient
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -27,7 +26,7 @@ class Nutrient
     private $unit_name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $nutrient_nbr;
 
@@ -60,12 +59,12 @@ class Nutrient
         return $this;
     }
 
-    public function getNutrientNbr(): ?int
+    public function getNutrientNbr(): ?float
     {
         return $this->nutrient_nbr;
     }
 
-    public function setNutrientNbr(int $nutrient_nbr): self
+    public function setNutrientNbr(float $nutrient_nbr): self
     {
         $this->nutrient_nbr = $nutrient_nbr;
 

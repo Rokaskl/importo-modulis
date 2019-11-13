@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * https://www.ars.usda.gov/ARSUserFiles/80400525/Data/retn/retn06.pdf?fbclid=IwAR0RKfH9pPQdm_ckMV-468j4oG5a4UpAjvpzyr1bF4SWs3lZdDE9AbFpsiA
+ * Table formatting in this link
+ */
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -11,7 +14,6 @@ class RetentionFactor
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;

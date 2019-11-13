@@ -23,7 +23,7 @@ class SubSampleResult
     private $food_nutrient_id;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $adjusted_amount;
 

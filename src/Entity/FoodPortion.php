@@ -11,7 +11,6 @@ class FoodPortion
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -28,7 +27,7 @@ class FoodPortion
     private $seq_num;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $amount;
 
@@ -54,7 +53,7 @@ class FoodPortion
     private $gram_weight;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable="true")
      */
     private $data_points;
 

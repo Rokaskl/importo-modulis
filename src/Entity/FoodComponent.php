@@ -11,7 +11,6 @@ class FoodComponent
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -48,7 +47,7 @@ class FoodComponent
     private $data_points;
 
     /**
-     * @ORM\Column(type="string", length=4)
+     * @ORM\Column(type="string", length=4, nullable=true)
      */
     private $min_year_acquired;
 

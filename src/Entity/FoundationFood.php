@@ -23,7 +23,7 @@ class FoundationFood
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $NDB_number;
 

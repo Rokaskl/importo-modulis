@@ -11,7 +11,6 @@ class InputFood
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -21,6 +20,12 @@ class InputFood
      * @ORM\JoinColumn(nullable=false)
      */
     private $fdc_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\food")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $fdc_id_of_input_food;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -53,20 +58,14 @@ class InputFood
     private $portion_code;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="float", nullable=true)
      */
-    private $fdc_id_of_input_food;
+    private $gram_weight;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $portion_description;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $gram_weight;
 
     /**
      * @ORM\Column(type="integer", nullable=true)

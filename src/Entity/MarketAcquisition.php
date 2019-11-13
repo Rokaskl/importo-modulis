@@ -28,7 +28,7 @@ class MarketAcquisition
     private $brand_description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $expiration_date;
 
@@ -53,7 +53,7 @@ class MarketAcquisition
     private $sales_type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sales_lot_nbr;
 
