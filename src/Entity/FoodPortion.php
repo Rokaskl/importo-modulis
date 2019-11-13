@@ -53,7 +53,7 @@ class FoodPortion
     private $gram_weight;
 
     /**
-     * @ORM\Column(type="integer", nullable="true")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $data_points;
 
