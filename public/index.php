@@ -27,8 +27,7 @@ $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
 
-
-include "../FDCimportModule/test.php";
-include "../FDCimportModule/fileDownload.php";
-include "../FDCimportModule/csvRead.php";
+// Basically, we don't need to come here again
+include "../FDCimportModule/importMain.php";
+importMain::updateDB();
 

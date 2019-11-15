@@ -1,6 +1,36 @@
 <?php
 
-$all_file_paths = scandir ( $extractPath );
+function read_files($dir)
+{
+    $files = scandir ($dir);
+    $filtered_files = filter_files($files);
+    foreach ($filtered_files as $file) {
+        echo $file."</br>";
+    }
+}
+
+function read_file($file_name)
+{
+
+}
+
+function filter_files($file_array)
+{
+    $pattern = "/^.*\.(csv)$/i";
+    return preg_grep($pattern, $file_array);
+}
+function erase_files($dir)
+{
+    $fileSystem = new Symfony\Component\Filesystem();
+    $files = scandir ($dir);
+    $filtered_files = filter_files($files);
+    foreach ($filtered_files as $file) {
+        //chmod($file, 0644);
+        //unlink($dir.$file);
+    }
+}
+//--------------------------------------------------------------------
+/*$all_file_paths = scandir ( $extractPath );
 //$dbc=mysqli_connect('localhost','root', '','Mdb');
 //if(!$dbc){die ("Failure:" .mysqli_error($dbc)); }
 
@@ -8,13 +38,13 @@ $all_file_paths = scandir ( $extractPath );
 foreach($all_file_paths as $file_path){
 	$length = strlen($file_path);
 	$sql = "";
-	
+
 	if(substr($file_path, $length - 4, $length) == ".csv"){
 		$file = fopen($extractPath."/".$file_path, "r") or die("Unable to read the file: ".$file_path);
 		$index = 0; 				// Line index
 
 		$columns = fgetcsv($file); 	// Gets the first line with column names
-		
+
 		$table_name = substr($file_path, 0, strlen($file_path) - 4);
 
 
@@ -26,15 +56,15 @@ foreach($all_file_paths as $file_path){
 		// 	$sql = $sql.$column." VARCHAR(100),";
 		// }
 		// $sql = $sql."id PRIMARY KEY AUTO_INCREMENT);";
-		
+
 		//mysql_query($sql);
-		
+
 		//print($sql); echo "<br>";
-		
+
 		//$sql = "INSERT INTO ".$table_name." VALUES ";
 		// Reads file's line
 		while(!feof($file)){
-			
+
 			$line = fgetcsv($file);
 			//print_r($line); echo "<br>";
 			//if(!feof($file))
@@ -45,7 +75,7 @@ foreach($all_file_paths as $file_path){
 			// 	$sql = $sql."',".$field;
 			// }
 			// $sql = $sql."')";
-			
+
 			$index++;
 			if($index == 5000){
 				$index = 0;
@@ -55,10 +85,10 @@ foreach($all_file_paths as $file_path){
 		}
 		//$sql = $sql.";";
 		print($sql); echo "<br>";
-		
+
 		fclose($file);
-	}	
-	
+	}
+
 }
 
 function CommitChanges(){

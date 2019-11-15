@@ -1,48 +1,43 @@
 <?php
-$url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
-$zip_file = "../FDCimportModule/file.zip";
-$extractPath = "../FDCimportModule/files";
-echo"Downloading Zip file...</br>";
-if (!file_exists($extractPath)) {
-
-$zip_resource = fopen($zip_file, "w");
-$ch_start = curl_init();
-curl_setopt($ch_start, CURLOPT_URL, $url);
-curl_setopt($ch_start, CURLOPT_FAILONERROR, true);
-curl_setopt($ch_start, CURLOPT_HEADER, 0);
-curl_setopt($ch_start, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch_start, CURLOPT_AUTOREFERER, true);
-curl_setopt($ch_start, CURLOPT_BINARYTRANSFER,true);
-curl_setopt($ch_start, CURLOPT_TIMEOUT, 100);
-curl_setopt($ch_start, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch_start, CURLOPT_SSL_VERIFYPEER, 0); 
-curl_setopt($ch_start, CURLOPT_FILE, $zip_resource);
-$page = curl_exec($ch_start);
-if(!$page)
+function get_file($url, $file_name)
 {
- echo "Error :- ".curl_error($ch_start);
-}
-curl_close($ch_start);
+    $renamed_file = fopen($file_name, "w");
 
-$zip = new ZipArchive;
-if($zip->open($zip_file) != "true")
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url); // Sets url from the its going to be downloaded
+    curl_setopt($ch, CURLOPT_FILE, $renamed_file); // SEts the name of downloaded file
+
+    curl_setopt($ch, CURLOPT_FAILONERROR, true); // true - fails if http code returned is >400
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER,true); // True - to return the raw output when curlopt_returntransfer is  used. TODO find usefulness of this 1
+    curl_setopt($ch, CURLOPT_TIMEOUT, 100); // Sets max seconds to allow curl func to execute. Does it matter? TODO find usefulness of this 2
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // 0 - doesn't check the name of host with the common existing name
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); // 0 - stops curl from verifying the peer's certificate
+
+    curl_exec($ch);
+
+    if (curl_error($ch)) {
+        throw new Exception(curl_error($ch));
+    }
+
+    curl_close($ch);
+    fclose($renamed_file);
+}
+
+function extract_file($zip_file, $dir)
 {
- echo "Error :- Unable to open the Zip File";
-} 
-if($zip->open($zip_file) == "true"){
-    echo"Zip downloaded successfuly</br>";
+    $zip = new ZipArchive();
 
+    if ($zip->open($zip_file) !== TRUE) {
+        echo "Error :- Unable to open the Zip file</br>";
+    } else {
+        echo "Zip downloaded succesfully</br>";
+    }
+
+    $zip->extractTo($dir);
+    $zip->close();
+    echo "Zip extracted succesfully</br>";
 }
-
-
-$zip->extractTo($extractPath);
-$zip->close();
-echo"Zip extracted successfuly</br>";
-unlink($zip_file);
-echo"Zip file deleted";
-}
-else{
-    echo"folder already exists";
-
-}
-?>
