@@ -16,7 +16,11 @@ class FileController
 {
     function get_file($url, $file_name)
     {
+<<<<<<< HEAD
         /*$renamed_file = fopen($file_name, "w");
+=======
+        $renamed_file = fopen($file_name, "w");
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
 
         $ch = curl_init();
 
@@ -39,8 +43,12 @@ class FileController
         }
 
         curl_close($ch);
+<<<<<<< HEAD
         fclose($renamed_file);*/
         $filePath = $this->getParameter();
+=======
+        fclose($renamed_file);
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
     }
 
     function extract_file($zip_file, $dir)
