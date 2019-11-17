@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 // This is where we are going
@@ -16,11 +15,7 @@ class MainController extends AbstractController
 {
     /**
      * @Route("/")
-     */
-
-
-
-
+     */ 
     public function homepage()
     {
         $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
