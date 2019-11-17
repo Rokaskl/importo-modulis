@@ -111,6 +111,8 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+<<<<<<< HEAD
+<<<<<<< HEAD
     "sensiolabs/security-checker": {
         "version": "4.0",
         "recipe": {
@@ -123,6 +125,10 @@
             "./config/packages/security_checker.yaml"
         ]
     },
+=======
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+>>>>>>> csvread
     "symfony/cache": {
         "version": "v4.3.6"
     },

@@ -7,6 +7,7 @@ namespace App\Controller;
 // to post our methods and stuff
 // TODO: READ DOCUMENTATION
 
+
 // this class gives shortcut methods
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,12 @@ class MainController extends AbstractController
     /**
      * @Route("/")
      */
+
 use Symfony\Component\HttpFoundation\Response;
 
 class MainController
 {
+
     public function homepage()
     {
         $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
@@ -57,4 +60,5 @@ class MainController
             $slug
         ));*/
     }
+
 }
