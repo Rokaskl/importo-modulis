@@ -7,7 +7,6 @@ namespace App\Controller;
 // to post our methods and stuff
 // TODO: READ DOCUMENTATION
 
-<<<<<<< HEAD
 // this class gives shortcut methods
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +17,10 @@ class MainController extends AbstractController
     /**
      * @Route("/")
      */
-=======
 use Symfony\Component\HttpFoundation\Response;
 
 class MainController
 {
->>>>>>> Fixed project structure according good practice and added comments to parts of code
     public function homepage()
     {
         $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
@@ -32,7 +29,6 @@ class MainController
         //get_file($url,$zip_file);
         //extract_file($zip_file,$extractPath);
         //read_files($extractPath);
-<<<<<<< HEAD
         //erase_files($extractPath);
         //chmod("../data/CsvData".$zip_file, 0644);
         //unlink($zip_file);
@@ -61,12 +57,4 @@ class MainController
             $slug
         ));*/
     }
-=======
-        erase_files($extractPath);
-        chmod("../data/CsvData".$zip_file, 0644);
-        unlink($zip_file);
-        //importMain::updateDB();
-        return new Response("Testing homepage");
-    }
->>>>>>> Fixed project structure according good practice and added comments to parts of code
 }

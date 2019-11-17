@@ -6,10 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.5",
-<<<<<<< HEAD
         "sensiolabs/security-checker": "^6.0",
-=======
->>>>>>> Fixed project structure according good practice and added comments to parts of code
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",
         "symfony/flex": "^1.3.1",
