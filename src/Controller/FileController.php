@@ -16,7 +16,7 @@ class FileController
 {
     function get_file($url, $file_name)
     {
-        $renamed_file = fopen($file_name, "w");
+        /*$renamed_file = fopen($file_name, "w");
 
         $ch = curl_init();
 
@@ -39,7 +39,8 @@ class FileController
         }
 
         curl_close($ch);
-        fclose($renamed_file);
+        fclose($renamed_file);*/
+        $filePath = $this->getParameter();
     }
 
     function extract_file($zip_file, $dir)

@@ -2,34 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecb24eea-197c-4efb-8612-f07717759dd2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/importo-modulis.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Diagrams/ER model.mdzip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Diagrams/ER model.mdzip.bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Download &amp; API Field Descriptions-2019-10-11-16-22.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/all_downloaded_table_record_counts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/FileController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/InputController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191115120057.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/importo-modulis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/importo-modulis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FDCimportModule/csvRead.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FDCimportModule/fileDownload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FDCimportModule/files/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/testfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FDCimportModule/importMain.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,6 +99,15 @@
       <path value="$PROJECT_DIR$/vendor/symfony/intl" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TQiBejRIO5KMkAlP5IIl8zPzTB" />
@@ -139,10 +130,11 @@
       <recent name="D:\Studies\Tinklai\importo-modulis\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Studies\Tinklai\importo-modulis\templates" />
+      <recent name="D:\Studies\Tinklai\importo-modulis\templates\main" />
       <recent name="D:\Studies\Tinklai\importo-modulis\data" />
       <recent name="D:\Studies\Tinklai\importo-modulis\src\Data" />
       <recent name="D:\Studies\Tinklai\importo-modulis" />
-      <recent name="D:\Studies\Tinklai\importo-modulis\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -203,7 +195,7 @@
       <workItem from="1573777229305" duration="147000" />
       <workItem from="1573777994265" duration="3514000" />
       <workItem from="1573781665087" duration="14028000" />
-      <workItem from="1573994905440" duration="3535000" />
+      <workItem from="1573994905440" duration="7844000" />
     </task>
     <servers />
   </component>
