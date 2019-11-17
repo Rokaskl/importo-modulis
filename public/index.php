@@ -26,8 +26,3 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
-
-// Basically, we don't need to come here again
-include "../FDCimportModule/importMain.php";
-importMain::updateDB();
-
