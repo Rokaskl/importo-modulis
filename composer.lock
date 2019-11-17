@@ -4,21 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-
-
-
-
-
-
-
-
-
-
-
-    "content-hash": "272f20779b998878f70346a2f56ce16e",
-
-
+    "content-hash": "21202fb9663757465065e7711d60d797",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -90,16 +76,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "c15dcd24b756f9e52ea7c3ae8227354f3628f11a"
+                "reference": "89a5c76c39c292f7798f964ab3c836c3f8192a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/c15dcd24b756f9e52ea7c3ae8227354f3628f11a",
-                "reference": "c15dcd24b756f9e52ea7c3ae8227354f3628f11a",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/89a5c76c39c292f7798f964ab3c836c3f8192a55",
+                "reference": "89a5c76c39c292f7798f964ab3c836c3f8192a55",
                 "shasum": ""
             },
             "require": {
@@ -169,7 +155,7 @@
                 "riak",
                 "xcache"
             ],
-            "time": "2019-11-11T10:31:52+00:00"
+            "time": "2019-11-15T14:31:57+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -1637,8 +1623,6 @@
             "time": "2019-10-16T18:54:45+00:00"
         },
         {
-
-
             "name": "sensiolabs/security-checker",
             "version": "v6.0.3",
             "source": {
@@ -1687,10 +1671,6 @@
             "time": "2019-11-01T13:20:14+00:00"
         },
         {
-
-
-
-
             "name": "symfony/cache",
             "version": "v4.3.8",
             "source": {
@@ -2640,8 +2620,6 @@
             "description": "Symfony FrameworkBundle",
             "homepage": "https://symfony.com",
             "time": "2019-11-08T22:04:53+00:00"
-
-
         },
         {
             "name": "symfony/http-client",
@@ -2761,10 +2739,6 @@
                 "standards"
             ],
             "time": "2019-11-07T12:44:51+00:00"
-
-
-
-
         },
         {
             "name": "symfony/http-foundation",
@@ -3417,8 +3391,6 @@
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
             "time": "2019-11-05T14:48:09+00:00"
-
-
         },
         {
             "name": "symfony/translation-contracts",
@@ -3682,10 +3654,6 @@
             ],
             "description": "A Twig pack for Symfony projects",
             "time": "2019-10-17T05:44:22+00:00"
-
-
-
-
         },
         {
             "name": "symfony/var-exporter",
