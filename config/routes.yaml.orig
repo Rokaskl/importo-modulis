@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+#index:
+#    path: /
+<<<<<<< HEAD
+#    controller: App\Controller\MainController::homepage
+=======
+#    controller: App\Controller\MainController::homepage
+=======
+index:
+    path: /
+    controller: App\Controller\MainController::homepage
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+index:
+    path: /
+    controller: App\Controller\MainController::homepage
+>>>>>>> csvread
+>>>>>>> csvread

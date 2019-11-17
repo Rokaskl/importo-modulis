@@ -7,16 +7,16 @@ return [
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
-
-
+<<<<<<< HEAD
+<<<<<<< HEAD
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
-
+<<<<<<< HEAD
 ];
-
-
-
-
-
-
-
+=======
+=======
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+>>>>>>> csvread
+];
+>>>>>>> csvread

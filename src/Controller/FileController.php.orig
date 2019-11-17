@@ -17,7 +17,7 @@ class FileController
     function get_file($url, $file_name)
     {
         /*$renamed_file = fopen($file_name, "w");
-
+        $renamed_file = fopen($file_name, "w");
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url); // Sets url from the its going to be downloaded

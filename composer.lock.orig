@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-
-
-
-
-
-
-
-
-
-
+<<<<<<< HEAD
 
     "content-hash": "272f20779b998878f70346a2f56ce16e",
 
-
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "content-hash": "21202fb9663757465065e7711d60d797",
+=======
+    "content-hash": "272f20779b998878f70346a2f56ce16e",
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+    "content-hash": "272f20779b998878f70346a2f56ce16e",
+>>>>>>> csvread
+>>>>>>> csvread
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1637,8 +1637,8 @@
             "time": "2019-10-16T18:54:45+00:00"
         },
         {
-
-
+<<<<<<< HEAD
+<<<<<<< HEAD
             "name": "sensiolabs/security-checker",
             "version": "v6.0.3",
             "source": {
@@ -1687,10 +1687,10 @@
             "time": "2019-11-01T13:20:14+00:00"
         },
         {
-
-
-
-
+=======
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+>>>>>>> csvread
             "name": "symfony/cache",
             "version": "v4.3.8",
             "source": {
@@ -2640,8 +2640,8 @@
             "description": "Symfony FrameworkBundle",
             "homepage": "https://symfony.com",
             "time": "2019-11-08T22:04:53+00:00"
-
-
+<<<<<<< HEAD
+<<<<<<< HEAD
         },
         {
             "name": "symfony/http-client",
@@ -2761,10 +2761,10 @@
                 "standards"
             ],
             "time": "2019-11-07T12:44:51+00:00"
-
-
-
-
+=======
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+>>>>>>> csvread
         },
         {
             "name": "symfony/http-foundation",
@@ -3417,8 +3417,8 @@
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
             "time": "2019-11-05T14:48:09+00:00"
-
-
+<<<<<<< HEAD
+<<<<<<< HEAD
         },
         {
             "name": "symfony/translation-contracts",
@@ -3682,10 +3682,10 @@
             ],
             "description": "A Twig pack for Symfony projects",
             "time": "2019-10-17T05:44:22+00:00"
-
-
-
-
+=======
+>>>>>>> Fixed project structure according good practice and added comments to parts of code
+=======
+>>>>>>> csvread
         },
         {
             "name": "symfony/var-exporter",
