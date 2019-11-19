@@ -1,10 +1,14 @@
-{# Commenting example using twig #}
+{#
+    This is a show method using twig
+    DO NOT DELETE
+    Commenting example using twig
+    #}
 {% extends 'base.html.twig' %}
 
 {% block title %} Read {{ title }} {% endblock %}
 {% block body %}
-<h1>{{ title }}</h1>
 
+<h1>{{ title }}</h1>
 <ul>
     {% for text in texts %}
        <li>{{ text }}</li>

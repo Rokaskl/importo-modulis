@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>f8579c90-beee-4342-af99-5cf89110401b</OriginalElement>
+  <nodes>
+    <node x="3086.077178030303" y="581.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method</node>
+    <node x="2316.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.SESSION_STATUS</node>
+    <node x="1207.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.TABLE_CONSTRAINTS</node>
+    <node x="232.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.APPLICABLE_ROLES</node>
+    <node x="29.75" y="493.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_portion</node>
+    <node x="3317.827178030303" y="189.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.nutrient</node>
+    <node x="1982.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.COLLATION_CHARACTER_SET_APPLICABILITY</node>
+    <node x="1257.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.PROFILING</node>
+    <node x="2400.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.user_variables</node>
+    <node x="1043.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.CHECK_CONSTRAINTS</node>
+    <node x="661.0771780303032" y="526.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_component</node>
+    <node x="422.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.SCHEMATA</node>
+    <node x="1290.077178030303" y="880.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.acquisition_sample</node>
+    <node x="2305.077178030303" y="592.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_conversion_factor</node>
+    <node x="297.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_BUFFER_POOL_STATS</node>
+    <node x="316.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_BUFFER_PAGE_LRU</node>
+    <node x="1355.827178030303" y="145.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food</node>
+    <node x="3387.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_FOREIGN_COLS</node>
+    <node x="1559.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_FOREIGN</node>
+    <node x="740.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_CMP_PER_INDEX</node>
+    <node x="871.0771780303032" y="548.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.agricultural_acquisition</node>
+    <node x="0.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_CMP_PER_INDEX_RESET</node>
+    <node x="1894.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_TABLESPACES</node>
+    <node x="2555.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.SYSTEM_VARIABLES</node>
+    <node x="271.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.KEY_COLUMN_USAGE</node>
+    <node x="2517.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_COLUMNS</node>
+    <node x="958.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_SEMAPHORE_WAITS</node>
+    <node x="2859.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.ALL_PLUGINS</node>
+    <node x="1321.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.SCHEMA_PRIVILEGES</node>
+    <node x="0.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_CMP</node>
+    <node x="0.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.GEOMETRY_COLUMNS</node>
+    <node x="2813.327178030303" y="471.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient</node>
+    <node x="1640.077178030303" y="471.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.input_food</node>
+    <node x="1755.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_FT_INDEX_CACHE</node>
+    <node x="2670.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_MUTEXES</node>
+    <node x="1781.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.migration_versions</node>
+    <node x="722.3115530303032" y="189.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.retention_factor</node>
+    <node x="722.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.ROUTINES</node>
+    <node x="1502.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_TABLESPACES_ENCRYPTION</node>
+    <node x="905.0" y="3471.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.ENABLED_ROLES</node>
+    <node x="2118.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.CHARACTER_SETS</node>
+    <node x="2171.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_LOCKS</node>
+    <node x="2844.327178030303" y="0.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_source</node>
+    <node x="2564.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.GLOBAL_VARIABLES</node>
+    <node x="2812.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.GLOBAL_STATUS</node>
+    <node x="3060.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.SESSION_VARIABLES</node>
+    <node x="0.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INDEX_STATISTICS</node>
+    <node x="0.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.FILES</node>
+    <node x="680.0" y="3471.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_FT_DELETED</node>
+    <node x="1307.077178030303" y="592.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sample_food</node>
+    <node x="257.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_TABLES</node>
+    <node x="1485.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.COLLATIONS</node>
+    <node x="3308.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_DATAFILES</node>
+    <node x="819.5615530303032" y="0.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_category</node>
+    <node x="2364.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.TABLES</node>
+    <node x="2911.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.USER_PRIVILEGES</node>
+    <node x="665.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.wweia_food_category</node>
+    <node x="3033.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.TRIGGERS</node>
+    <node x="3268.077178030303" y="869.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method_nutrient</node>
+    <node x="2412.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_TABLESPACES_SCRUBBING</node>
+    <node x="598.5771780303032" y="869.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sub_sample_food</node>
+    <node x="449.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.SPATIAL_REF_SYS</node>
+    <node x="2665.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.COLUMNS</node>
+    <node x="3115.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.TABLESPACES</node>
+    <node x="2815.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_TABLESTATS</node>
+    <node x="267.07717803030323" y="581.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sr_legacy_food</node>
+    <node x="1756.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_METRICS</node>
+    <node x="1443.077178030303" y="570.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_update_log_entry</node>
+    <node x="2647.327178030303" y="200.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_attribute_type</node>
+    <node x="1416.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.USER_STATISTICS</node>
+    <node x="504.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_INDEXES</node>
+    <node x="2884.077178030303" y="847.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sub_sample_result</node>
+    <node x="1310.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_FIELDS</node>
+    <node x="1028.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.PARTITIONS</node>
+    <node x="2279.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.TABLE_PRIVILEGES</node>
+    <node x="0.0" y="200.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.measure_unit</node>
+    <node x="969.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.COLUMN_PRIVILEGES</node>
+    <node x="444.0" y="3471.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_FT_BEING_DELETED</node>
+    <node x="0.0" y="3471.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_FT_CONFIG</node>
+    <node x="2572.077178030303" y="548.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_attribute</node>
+    <node x="2752.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_CMPMEM_RESET</node>
+    <node x="1748.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.CLIENT_STATISTICS</node>
+    <node x="1546.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_SYS_VIRTUAL</node>
+    <node x="3085.077178030303" y="869.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method_code</node>
+    <node x="2017.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_FT_INDEX_TABLE</node>
+    <node x="2080.0" y="1031.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.EVENTS</node>
+    <node x="889.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.REFERENTIAL_CONSTRAINTS</node>
+    <node x="2138.577178030303" y="847.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_calorie_conversion_factor</node>
+    <node x="0.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_TRX</node>
+    <node x="3400.827178030303" y="581.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.nutrient_incoming_name</node>
+    <node x="187.0" y="3471.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_FT_DEFAULT_STOPWORD</node>
+    <node x="2830.327178030303" y="189.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_derivation</node>
+    <node x="2036.077178030303" y="482.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.branded_food</node>
+    <node x="1089.077178030303" y="460.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.market_acquisition</node>
+    <node x="425.07717803030323" y="548.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.survey_fndds_food</node>
+    <node x="997.0" y="3310.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.all_downloaded_table_record_counts</node>
+    <node x="2981.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_CMPMEM</node>
+    <node x="1767.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.OPTIMIZER_TRACE</node>
+    <node x="3151.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.PLUGINS</node>
+    <node x="2438.577178030303" y="869.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_protein_conversion_factor</node>
+    <node x="748.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.TABLE_STATISTICS</node>
+    <node x="1867.077178030303" y="570.0">f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.foundation_food</node>
+    <node x="606.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.KEY_CACHES</node>
+    <node x="1218.0" y="2497.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.VIEWS</node>
+    <node x="3149.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_LOCK_WAITS</node>
+    <node x="637.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_BUFFER_PAGE</node>
+    <node x="3210.0" y="2856.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.ENGINES</node>
+    <node x="1998.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.PARAMETERS</node>
+    <node x="1512.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.PROCESSLIST</node>
+    <node x="2304.0" y="1940.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.STATISTICS</node>
+    <node x="211.0" y="3105.0">f8579c90-beee-4342-af99-5cf89110401b.VIEW:information_schema.INNODB_CMP_RESET</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method_nutrient" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.nutrient">
+      <point x="40.75" y="-47.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_protein_conversion_factor" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_conversion_factor">
+      <point x="0.0" y="-47.5" />
+      <point x="2578.577178030303" y="822.0" />
+      <point x="2490.327178030303" y="822.0" />
+      <point x="61.75" y="36.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.survey_fndds_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-80.5" />
+      <point x="532.5771780303032" y="390.0" />
+      <point x="1384.733428030303" y="390.0" />
+      <point x="-63.59375" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_portion" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.measure_unit">
+      <point x="-51.75" y="-135.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.agricultural_acquisition" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-80.5" />
+      <point x="970.0771780303032" y="420.0" />
+      <point x="1419.420928030303" y="420.0" />
+      <point x="-28.90625" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.branded_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-146.5" />
+      <point x="2160.577178030303" y="400.0" />
+      <point x="1500.358428030303" y="400.0" />
+      <point x="52.03125" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_conversion_factor" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-36.5" />
+      <point x="2428.577178030303" y="390.0" />
+      <point x="1511.920928030303" y="390.0" />
+      <point x="63.59375" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_update_log_entry" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-58.5" />
+      <point x="1531.577178030303" y="440.0" />
+      <point x="1454.108428030303" y="440.0" />
+      <point x="5.78125" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.foundation_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-58.5" />
+      <point x="1941.577178030303" y="410.0" />
+      <point x="1488.795928030303" y="410.0" />
+      <point x="40.46875" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.acquisition_sample" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sample_food">
+      <point x="0.0" y="-36.5" />
+      <point x="29.0" y="36.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sub_sample_result" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient">
+      <point x="-45.25" y="-69.5" />
+      <point x="0.0" y="157.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_calorie_conversion_factor" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_conversion_factor">
+      <point x="0.0" y="-69.5" />
+      <point x="2278.577178030303" y="822.0" />
+      <point x="2366.827178030303" y="822.0" />
+      <point x="-61.75" y="36.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.retention_factor" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_category">
+      <point x="0.0" y="-58.5" />
+      <point x="803.3115530303032" y="120.0" />
+      <point x="859.8115530303032" y="120.0" />
+      <point x="-40.25" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.nutrient">
+      <point x="77.33333333333337" y="-157.5" />
+      <point x="3006.6605113636365" y="440.0" />
+      <point x="3341.99384469697" y="440.0" />
+      <point x="-48.33333333333334" y="58.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_category">
+      <point x="0.0" y="-102.5" />
+      <point x="1448.327178030303" y="120.0" />
+      <point x="940.3115530303032" y="120.0" />
+      <point x="40.25" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_component" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-102.5" />
+      <point x="756.0771780303032" y="410.0" />
+      <point x="1407.858428030303" y="410.0" />
+      <point x="-40.46875" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sub_sample_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="-52.0" y="-47.5" />
+      <point x="650.5771780303032" y="400.0" />
+      <point x="1396.295928030303" y="400.0" />
+      <point x="-52.03125" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sr_legacy_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-47.5" />
+      <point x="336.07717803030323" y="380.0" />
+      <point x="1373.170928030303" y="380.0" />
+      <point x="-75.15625" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sub_sample_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sample_food">
+      <point x="52.0" y="-47.5" />
+      <point x="754.5771780303032" y="822.0" />
+      <point x="1336.077178030303" y="822.0" />
+      <point x="-29.0" y="36.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_derivation" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_source">
+      <point x="0.0" y="-58.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.market_acquisition" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-168.5" />
+      <point x="1188.077178030303" y="430.0" />
+      <point x="1430.983428030303" y="430.0" />
+      <point x="-17.34375" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.input_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="-51.75" y="-157.5" />
+      <point x="1691.827178030303" y="430.0" />
+      <point x="1465.670928030303" y="430.0" />
+      <point x="17.34375" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_attribute" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="-52.25" y="-80.5" />
+      <point x="2624.327178030303" y="380.0" />
+      <point x="1523.483428030303" y="380.0" />
+      <point x="75.15625" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sub_sample_result" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method">
+      <point x="45.25" y="-69.5" />
+      <point x="3019.827178030303" y="822.0" />
+      <point x="3112.9105113636365" y="822.0" />
+      <point x="-53.666666666666686" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method_code" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="-77.33333333333326" y="-157.5" />
+      <point x="2851.99384469697" y="370.0" />
+      <point x="1535.045928030303" y="370.0" />
+      <point x="86.71875" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_portion" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="51.75" y="-135.5" />
+      <point x="185.0" y="370.0" />
+      <point x="1361.608428030303" y="370.0" />
+      <point x="-86.71875" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method_nutrient" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.lab_method">
+      <point x="-40.75" y="-47.5" />
+      <point x="3308.827178030303" y="822.0" />
+      <point x="3220.24384469697" y="822.0" />
+      <point x="53.66666666666663" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.nutrient_incoming_name" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.nutrient">
+      <point x="0.0" y="-47.5" />
+      <point x="3492.827178030303" y="440.0" />
+      <point x="3438.6605113636365" y="440.0" />
+      <point x="48.33333333333334" y="58.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.sample_food" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food">
+      <point x="0.0" y="-36.5" />
+      <point x="1365.077178030303" y="440.0" />
+      <point x="1442.545928030303" y="440.0" />
+      <point x="-5.78125" y="102.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_attribute" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_attribute_type">
+      <point x="52.25" y="-80.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient" target="f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.food_nutrient_derivation">
+      <point x="0.0" y="-157.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8633454953690709" x="1189.6225740385553" y="419.25623354247267" />
+  <SelectedNodes>
+    <node>f8579c90-beee-4342-af99-5cf89110401b.TABLE:mdb.foundation_food</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

@@ -15,25 +15,46 @@ TODO:
 
 class InputController
 {
+    /**
+     * Method which reads files in the directory and adds them to data base
+     * @param $dir
+     */
     function read_files($dir)
     {
         $files = scandir ($dir);
         $filtered_files = filter_files($files);
         foreach ($filtered_files as $file) {
+            // This where methods read file and insert into database will be executed
             echo $file."</br>";
         }
     }
 
+    /**
+     * Method which reads the contents of the given file
+     * @param $file_name
+     */
     function read_file($file_name)
     {
 
     }
 
+    /**
+     * Filtration method using regex
+     * This is made because it is cleaner
+     * and shorter
+     * @param $file_array
+     * @return array
+     */
     function filter_files($file_array)
     {
         $pattern = "/^.*\.(csv)$/i";
         return preg_grep($pattern, $file_array);
     }
+
+    /**
+     * Method which deletes all current files in dir
+     * @param $dir
+     */
     function erase_files($dir)
     {
         $fileSystem = new Symfony\Component\Filesystem();
@@ -44,7 +65,9 @@ class InputController
             //unlink($dir.$file);
         }
     }
-    //--------------------------------------------------------------------
+    /**
+     * Justai, jei naudosi si koda gali geriau parasyti. jauciu :D
+     */
     /*$all_file_paths = scandir ( $extractPath );
     //$dbc=mysqli_connect('localhost','root', '','Mdb');
     //if(!$dbc){die ("Failure:" .mysqli_error($dbc)); }

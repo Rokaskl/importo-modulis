@@ -16,7 +16,7 @@ class FileController
 {
     function get_file($url, $file_name)
     {
-        /*$renamed_file = fopen($file_name, "w");
+        $renamed_file = fopen($file_name, "w");
 
         $ch = curl_init();
 
@@ -40,13 +40,18 @@ class FileController
 
         curl_close($ch);
 
-        fclose($renamed_file);*/
-        $filePath = $this->getParameter();
+        fclose($renamed_file);
+
+        /** TODO compare plain php and symfony way of
+         * making file download
+         */
+        //$filePath = $this->getParameter();
     }
 
     function extract_file($zip_file, $dir)
     {
-        $zip = new ZipArchive();
+        // sign \ shows that the class should be taken from global namespace
+        $zip = new \ZipArchive;
 
         if ($zip->open($zip_file) !== TRUE) {
             return new Response("Error :- Unable to open the Zip file");
