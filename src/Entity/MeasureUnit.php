@@ -9,9 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeasureUnit
 {
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -52,5 +55,23 @@ class MeasureUnit
         $this->abbreviation = $abbreviation;
 
         return $this;
+    }
+
+    public function __construct($args, $doctrine)
+    {
+        //$em = $doctrine->getManager();
+        
+        $this->id = $args[0];
+       
+        $this->name = $args[1];
+        $this->abbreviation = "";
+        echo $args[0] . "   " . $args[1] . "  fields: " . $this->getId() . " " . $this->getName() . "<br>";
+        //$doctrine->getManager()->persist($this);
+        // if(isset($args[2])){
+        //     $this->abbreviation = "";
+        // }
+        // else{
+        //     $this->abbreviation = $args[2];
+        // }
     }
 }

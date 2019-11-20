@@ -9,6 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Food
 {
+
+    // public function __construct($args, $doctrine)
+    // {
+    //     $em = $doctrine->getManager();
+        
+    //     $this->id = $args[0];
+    //     $this->foodClass = $args[1];
+    //     $this->$food_category_id = $doctrine->getRepository('FoodCategory')->Find($args[2])->getId();
+    // }
+
     /**
      * @ORM\Id()
      * @ORM\Column(type="integer")
