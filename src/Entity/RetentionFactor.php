@@ -6,15 +6,32 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\FoodCategory;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RetentionFactorRepository")
  */
 class RetentionFactor
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->code = $args[1];
+        $this->food_group_id = $doctrine->getRepository(FoodCategory::class)->find($args[2]);
+        if(!isset($args[3])){
+            $this->description = null;
+        }
+        else{
+            $this->description = $args[3];
+        }
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

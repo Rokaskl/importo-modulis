@@ -3,15 +3,40 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
+use App\Entity\FoodAttributeType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodAttributeRepository")
  */
 class FoodAttribute
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[1]);
+        $this->seq_num = $args[2];
+        $this->food_attribute_type_id = $doctrine->getRepository(FoodAttributeType::class)->Find($args[3]);
+        if(!isset($args[4])){
+            $this->name = null;
+        }
+        else{
+            $this->name = $args[4];
+        }
+        if(!isset($args[5])){
+            $this->value = null;
+        }
+        else{
+            $this->value = $args[5];
+        }
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

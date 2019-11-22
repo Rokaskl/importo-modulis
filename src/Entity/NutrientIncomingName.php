@@ -3,15 +3,26 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Nutrient;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NutrientIncomingNameRepository")
  */
 class NutrientIncomingName
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->name = $args[1];
+        $this->nutrient_id = $doctrine->getRepository(Nutrient::class)->find($args[2]);
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

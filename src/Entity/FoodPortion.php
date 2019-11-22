@@ -3,15 +3,60 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
+use App\Entity\MeasureUnit;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodPortionRepository")
  */
 class FoodPortion
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[1]);
+        $this->seq_num = $args[2];
+        $this->amount = $args[3];
+        $this->measure_unit_id = $doctrine->getRepository(MeasureUnit::class)->Find($args[4]);
+        if(!isset($args[5])){
+            $this->portion_description = null;
+        }
+        else{
+            $this->portion_description = $args[5];
+        }
+        if(!isset($args[6])){
+            $this->modifier = null;
+        }
+        else{
+            $this->modifier = $args[6];
+        }
+        $this->gram_weight = $args[7];
+        if(!isset($args[8])){
+            $this->data_points = null;
+        }
+        else{
+            $this->data_points = $args[8];
+        }
+        if(!isset($args[9])){
+            $this->footnote = null;
+        }
+        else{
+            $this->footnote = $args[9];
+        }
+        if(!isset($args[10])){
+            $this->min_year_acquired = null;
+        }
+        else{
+            $this->min_year_acquired = $args[10];
+        }
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

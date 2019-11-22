@@ -3,12 +3,26 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
+use App\Entity\SampleFood;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SubSampleFoodRepository")
  */
 class SubSampleFood
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->find($args[0]);
+        if(!isset($args[1])){
+            $this->fdc_id_of_sample_food = null;
+        }
+        else{
+            $this->fdc_id_of_sample_food = $doctrine->getRepository(SampleFood::class)->find($args[1]);
+        }
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -24,7 +38,7 @@ class SubSampleFood
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\SampleFood")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id_of_sample_food;
 

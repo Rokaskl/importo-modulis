@@ -3,12 +3,39 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BrandedFoodRepository")
  */
 class BrandedFood
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        $this->brand_owner = $args[1];
+        $this->gtin_upc = $args[2];
+        $this->ingredients = $args[3];
+        $this->serving_size = $args[4];
+        $this->serving_size_unit = $args[5];
+        $this->household_serving_fulltext = $args[6];
+        if(!isset($args[7])){
+            $this->branded_food_category = null;
+        }
+        else{
+            $this->branded_food_category = $args[7];
+        }
+        if(!isset($args[8])){
+            $this->data_source = null;
+        }
+        else{
+            $this->data_source = $args[8];
+        }
+        $this->modified_date = new \DateTime($args[9]);
+        $this->available_date = new \DateTime($args[10]);
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

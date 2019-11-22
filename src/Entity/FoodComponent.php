@@ -3,15 +3,36 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodComponentRepository")
  */
 class FoodComponent
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[1]);
+        $this->name = $args[2];
+        $this->pct_weight = $args[3];
+        $this->is_refuse = $args[4] == "Y" ? true : false;
+        $this->gram_weight = $args[5];
+        $this->data_points = $args[6];
+        if(!isset($args[7])){
+            $this->min_year_acquired = null;
+        }
+        else{
+            $this->min_year_acquired = $args[7];
+        }
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

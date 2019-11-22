@@ -3,15 +3,32 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\LabMethod;
+use App\Entity\Nutrient;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LabMethodNutrientRepository")
  */
 class LabMethodNutrient
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->lab_method_id = $doctrine->getRepository(LabMethod::class)->find($args[1]);
+        if(!isset($args[2])){
+            $this->nutrient_id = null;
+        }
+        else{
+            $this->nutrient_id = $doctrine->getRepository(Nutrient::class)->find($args[2]);
+        }
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -23,7 +40,7 @@ class LabMethodNutrient
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Nutrient")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $nutrient_id;
 

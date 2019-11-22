@@ -6,4 +6,6 @@
 /public/bundles/
 /var/
 /vendor/
+/FDCimportModule/files/
+/src/Migrations/
 ###< symfony/framework-bundle ###

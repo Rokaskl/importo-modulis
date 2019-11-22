@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Cassandra\Date;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\FoodCategory;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodRepository")
@@ -10,18 +12,58 @@ use Doctrine\ORM\Mapping as ORM;
 class Food
 {
 
-    // public function __construct($args, $doctrine)
-    // {
-    //     $em = $doctrine->getManager();
+    public function __construct($args, $doctrine)
+    {
+        //$em = $doctrine->getManager();
         
-    //     $this->id = $args[0];
-    //     $this->foodClass = $args[1];
-    //     $this->$food_category_id = $doctrine->getRepository('FoodCategory')->Find($args[2])->getId();
-    // }
+        $this->id = $args[0];
 
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+        //For now doesnt exist.
+        // if(!isset($args[1])){
+        //     $this->foodClass = null;
+        // }
+        // else{
+        //     $this->foodClass = $args[1];
+        // }
+        
+        $this->foodClass = null;
+        $this->data_type = $args[1];
+        if(!isset($args[2])){
+            $this->description = null;
+        }
+        else{
+            $this->description = $args[2];
+        }
+        if(!isset($args[3]) || empty($args[3])){
+            $this->food_category_id = null;
+        }
+        else{
+            $this->food_category_id = $doctrine->getRepository(FoodCategory::class)->Find($args[3]);
+        }
+        
+        $this->publication_date = new \DateTime($args[4]);//\DateTime::createFromFormat('Y-m-d', $args[4])->format('Y-m-d');
+
+
+        //For now doesnt exist.
+        // if(!isset($args[5])){
+        //     $this->scientific_name = null;
+        // }
+        // else{
+        //     $this->scientific_name = $args[5];
+        // }
+        // if(!isset($args[6])){
+        //     $this->food_key = null;
+        // }
+        // else{
+        //     $this->food_key = $args[6];
+        // }
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -40,11 +82,11 @@ class Food
      */
     private $description;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\FoodCategory")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $food_category_id;
+    // /**
+    //  * @ORM\ManyToOne(targetEntity="App\Entity\FoodCategory")
+    //  * @ORM\JoinColumn(nullable=true)
+    //  */
+    // private $food_category_id;
 
     /**
      * @ORM\Column(type="datetime")
@@ -60,6 +102,11 @@ class Food
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $food_key;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\FoodCategory")
+     */
+    private $food_category_id;
 
     public function getId(): ?int
     {
@@ -102,18 +149,6 @@ class Food
         return $this;
     }
 
-    public function getFoodCategoryId(): ?FoodCategory
-    {
-        return $this->food_category_id;
-    }
-
-    public function setFoodCategoryId(?FoodCategory $food_category_id): self
-    {
-        $this->food_category_id = $food_category_id;
-
-        return $this;
-    }
-
     public function getPublicationDate(): ?\DateTimeInterface
     {
         return $this->publication_date;
@@ -146,6 +181,18 @@ class Food
     public function setFoodKey(?string $food_key): self
     {
         $this->food_key = $food_key;
+
+        return $this;
+    }
+
+    public function getFoodCategoryId(): ?FoodCategory
+    {
+        return $this->food_category_id;
+    }
+
+    public function setFoodCategoryId(?FoodCategory $food_category_id): self
+    {
+        $this->food_category_id = $food_category_id;
 
         return $this;
     }

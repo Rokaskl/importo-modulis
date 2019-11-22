@@ -9,9 +9,24 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FoodNutrientSource
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->code = $args[1];
+        if(!isset($args[2])){
+            $this->description = null;
+        }
+        else{
+            $this->description = $args[2];
+        }
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

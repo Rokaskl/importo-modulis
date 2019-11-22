@@ -3,15 +3,91 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InputFoodRepository")
  */
 class InputFood
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[1]);
+        if(!isset($args[2])){
+            $this->fdc_id_of_input_food = null;
+        }
+        else{
+            $this->fdc_id_of_input_food = $doctrine->getRepository(InputFood::class)->Find($args[2]);
+        }
+        if(!isset($args[3])){
+            $this->seq_num = null;
+        }
+        else{
+            $this->seq_num = $args[3];
+        }
+        if(!isset($args[4])){
+            $this->amount = null;
+        }
+        else{
+            $this->amount = $args[4];
+        }
+        if(!isset($args[5])){
+            $this->sr_code = null;
+        }
+        else{
+            $this->sr_code = $args[5];
+        }
+        if(!isset($args[6])){
+            $this->sr_description = null;
+        }
+        else{
+            $this->sr_description = $args[6];
+        }
+        if(!isset($args[7])){
+            $this->unit = null;
+        }
+        else{
+            $this->unit = $args[7];
+        }
+        if(!isset($args[8])){
+            $this->portion_code = null;
+        }
+        else{
+            $this->portion_code = $args[8];
+        }
+        if(!isset($args[9])){
+            $this->portion_description = null;
+        }
+        else{
+            $this->portion_description = $args[9];
+        }
+        if(!isset($args[10])){
+            $this->gram_weight = null;
+        }
+        else{
+            $this->gram_weight = $args[10];
+        }
+        if(!isset($args[11])){
+            $this->retention_code = null;
+        }
+        else{
+            $this->retention_code = $args[11];
+        }
+        if(!isset($args[12])){
+            $this->survey_flag = null;
+        }
+        else{
+            $this->survey_flag = $args[12];
+        }
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -22,7 +98,7 @@ class InputFood
     private $fdc_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\food")
+     * @ORM\ManyToOne(targetEntity="App\Entity\InputFood")
      * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id_of_input_food;
@@ -57,15 +133,15 @@ class InputFood
      */
     private $portion_code;
 
+     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $portion_description;
+
     /**
      * @ORM\Column(type="float", nullable=true)
      */
     private $gram_weight;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $portion_description;
 
     /**
      * @ORM\Column(type="integer", nullable=true)

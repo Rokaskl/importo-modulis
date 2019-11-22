@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SampleFoodRepository")
  */
 class SampleFood
 {
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->find($args[0]);
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -17,7 +23,7 @@ class SampleFood
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\food")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Food")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fdc_id;

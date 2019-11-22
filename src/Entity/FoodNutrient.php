@@ -3,15 +3,93 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
+use App\Entity\Nutrient;
+use App\Entity\FoodNutrientDerivation;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodNutrientRepository")
  */
 class FoodNutrient
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+
+    //TODO:
+    //NEAISKU
+    //standard error nera csv faile
+    //derivation id eina tarp datapoints ir min
+    //nutrient_analysis_details nera csv faile
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[1]);
+        $this->nutrient_id = $doctrine->getRepository(Nutrient::class)->Find($args[2]);
+        $this->amount = $args[3];
+        if(!isset($args[4])){
+            $this->data_points = null;
+        }
+        else{
+            $this->data_points = $args[4];
+        }
+        $this->standard_error = null;//for now
+        // if(!isset($args[5])){
+        //     $this->standard_error = null;
+        // }
+        // else{
+        //     $this->standard_error = $args[5];
+        // }
+        $this->gram_weight = $args[5];
+        $this->data_points = $args[6];
+        if(!isset($args[7])){
+            $this->derivation_id = null;
+        }
+        else{
+            $this->derivation_id = $doctrine->getRepository(FoodNutrientDerivation::class)->Find($args[7]);
+        }
+        if(!isset($args[8])){
+            $this->min = null;
+        }
+        else{
+            $this->min = $args[8];
+        }
+        if(!isset($args[9])){
+            $this->max = null;
+        }
+        else{
+            $this->max = $args[9];
+        }
+        if(!isset($args[10])){
+            $this->median = null;
+        }
+        else{
+            $this->median = $args[10];
+        }
+        if(!isset($args[11])){
+            $this->footnote = null;
+        }
+        else{
+            $this->footnote = $args[11];
+        }
+        if(!isset($args[12])){
+            $this->min_year_acquired = null;
+        }
+        else{
+            $this->min_year_acquired = $args[12];
+        }
+        $this->nutrient_analysis_details = null;//for now
+        // if(!isset($args[13])){
+        //     $this->nutrient_analysis_details = null;
+        // }
+        // else{
+        //     $this->nutrient_analysis_details = $args[13];
+        // }
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -43,6 +121,12 @@ class FoodNutrient
     private $standard_error;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrientDerivation")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $derivation_id;
+
+    /**
      * @ORM\Column(type="float", nullable=true)
      */
     private $min;
@@ -71,12 +155,6 @@ class FoodNutrient
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nutrient_analysis_details;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrientDerivation")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $derivation_id;
 
     public function getId(): ?int
     {

@@ -9,6 +9,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WweiaFoodCategory
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->wweia_food_category_code = $args[0];
+        if(!isset($args[1])){
+            $this->wweia_food_category_description = null;
+        }
+        else{
+            $this->wweia_food_category_description = $args[1];
+        }
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

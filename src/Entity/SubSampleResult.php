@@ -3,12 +3,33 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\FoodNutrient;
+use App\Entity\LabMethod;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SubSampleResultRepository")
  */
 class SubSampleResult
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->food_nutrient_id = $doctrine->getRepository(FoodNutrient::class)->find($args[0]);
+        if(!isset($args[1])){
+            $this->adjusted_amount = null;
+        }
+        else{
+            $this->adjusted_amount = $args[1];
+        }
+        if(!isset($args[2])){
+            $this->lab_method_id = null;
+        }
+        else{
+            $this->lab_method_id = $doctrine->getRepository(LabMethod::class)->find($args[2]);
+        }
+        $this->nutrient_name = $args[3];
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,7 +39,7 @@ class SubSampleResult
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrient")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $food_nutrient_id;
 
@@ -29,7 +50,7 @@ class SubSampleResult
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\LabMethod")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lab_method_id;
 

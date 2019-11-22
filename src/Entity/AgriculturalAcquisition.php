@@ -3,12 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AgriculturalAcquisitionRepository")
  */
 class AgriculturalAcquisition
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        $this->acquisition_date = new \DateTime($args[1]);
+        $this->market_class = $args[2];
+        $this->treatment = $args[3];
+        $this->state = $args[4];
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

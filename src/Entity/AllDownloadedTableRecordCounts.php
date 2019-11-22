@@ -9,6 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AllDownloadedTableRecordCounts
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->tbl = $args[0];
+        $this->number_of_records = $args[1];
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
