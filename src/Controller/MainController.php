@@ -35,7 +35,7 @@ class MainController extends AbstractController
             $length = strlen($file_path);
             $sql = "";
             echo $file_path."<br>";
-            if(substr($file_path, $length - 4, $length) == ".csv" && $file_path == 'food_nutrient.csv'){
+            if(substr($file_path, $length - 4, $length) == ".csv"/* && $file_path == 'food_nutrient.csv'*/){
                 $file = fopen($extractPath."/".$file_path, "r") or die("Unable to read the file: ".$file_path);
                 $index = 0; 				// Line index
         
