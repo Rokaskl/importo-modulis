@@ -1,56 +1,54 @@
 <?php
 
-namespace App\Controller;
+namespace App\Services;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Formatter\OutputFormatter;
+use ZipArchive;
 
-class MainController extends AbstractController
+class MigrationService
 {
-    /**
-     * @Route("/main", name="main")
-     */
-    public function index()
-    {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/MainController.php',
-        ]);
-    }
+
+
+    private $em;
+
 
     //Whole operation lasts ~70-90minutes.
     //~80mins on i7 7700hq, 8gb ram ddr4 2,400MHz, 240gb sata3 ssd,
     //~6 000 000 total records, ~1.2GB in database db = MariaDb; type = innoDB.
     //2019-12-03
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
 
-    /**
-     * @Route("/get-db", name="create_db")
-     */
     public function create_db()
     {
+
         $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
-        $extractPath = "../FDCimportModule/files";
+        $extractPath = "FDCimportModule/files";
         $timeout_after = 999999999;
         $persist_buffer = 40000;
         set_time_limit($timeout_after);
-        $extractPath = "../FDCimportModule/files";
+        $extractPath = "FDCimportModule/files";
         //$all_file_paths = scandir ( $extractPath );
-        $this->delete_current();
-        $this->download_extract_data($url, $extractPath);
+
+        //$this->delete_current();
+       $this->download_extract_data($url, $extractPath);
         $this->migrate_data_to_db($extractPath, $persist_buffer);
-        return new Response("");
     }
 
     //delete current data in database if such data exists.
     private function delete_current()
     {
         // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
-        $pdown = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191203190634', '--down']);
+
+        $pdown = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191203190634', '--down']);
         $pdown->setInput('y');
         $pdown->run();
         // while ($pdown->isRunning()) {
@@ -60,20 +58,19 @@ class MainController extends AbstractController
         if (!$pdown->isSuccessful()) {
             throw new ProcessFailedException($pdown);
         }
-        $pup = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191203190634', '--up']);
+        $pup = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191203190634', '--up']);
         $pup->setInput('y');
         $pup->run();
         if (!$pup->isSuccessful()) {
             throw new ProcessFailedException($pup);
         }
 
-        //echo $process->getOutput();
     }
 
     private function download_extract_data($url, $extractPath)
     {
-        $zip_file = "../FDCimportModule/file.zip";
-        echo "Downloading Zip file...</br>";
+        $zip_file = "FDCimportModule/file.zip";
+        echo "Downloading Zip file...\n";
         if (!file_exists($extractPath)) {
 
             $zip_resource = fopen($zip_file, "w");
@@ -94,44 +91,66 @@ class MainController extends AbstractController
             }
             curl_close($ch_start);
 
-            $zip = new \ZipArchive;
+            $zip = new ZipArchive;
             if ($zip->open($zip_file) != "true") {
-                echo "Error :- Unable to open the Zip File";
+                echo "Error :- Unable to open the Zip File\n";
             }
             if ($zip->open($zip_file) == "true") {
-                echo "Zip downloaded successfuly</br>";
+                echo "Zip downloaded successfuly\n";
 
             }
 
             $zip->extractTo($extractPath);
             $zip->close();
-            echo "Zip extracted successfuly</br>";
+            echo "Zip extracted successfuly\n";
             unlink($zip_file);
-            echo "Zip file deleted";
+            echo "Zip file deleted\n";
         } else {
-            echo "folder already exists";
+            echo "Folder already exists\n";
         }
     }
 
     private function migrate_data_to_db($extractPath, $persist_buffer)
     {
+        //----------MIGRATION LOADING BAR-----------------------------------------
+        $section1 = new ConsoleOutput();
+        $section1->setFormatter(new OutputFormatter(true));
+
+        $rows = 33; //FILE COUNT TODO: auto get file count
+        $progressBar = new ProgressBar($section1, $rows);
+        $progressBar->setBarCharacter('<fg=green>=</>');
+        $progressBar->setFormat("  %message% \n %current%/%max% [%bar%] %percent:3s%%\n");
+        $progressBar->setMessage('Start');
+
+        $progressBar->start();
+
+
+        //------------------------------------------------------------------------
+
         $all_file_paths = $this->OrderFiles($extractPath);
 
-        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager = $this->em;
         $entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
-        $doct = $this->getDoctrine();
         //print_r($all_file_paths);
         foreach ($all_file_paths as $file_path) {
             $length = strlen($file_path);
+            $progressBar->setMessage('Importing  '.$file_path);
             //echo $file_path . "<br>";
             if (substr($file_path, $length - 4, $length) == ".csv" /* && $file_path == 'food_nutrient.csv'*/) {
-                $this->import($extractPath, $file_path, $entityManager, $doct, $persist_buffer);
+                $this->import($extractPath, $file_path, $entityManager,  $persist_buffer);
+
             }
+            $progressBar->advance();
+
+
+
         }
+        $progressBar->finish();
+
     }
 
     //Converts csv file lines into entities and imports them into database.
-    private function import($extractPath, $file_path, $em, $doct, $persist_buffer)
+    private function import($extractPath, $file_path, $em, $persist_buffer)
     {
         $file = fopen($extractPath . "/" . $file_path, "r") or die("Unable to read the file: " . $file_path); //Gets the file in $file_path.
         $index = 0; // Line index. Used to flush data periodically after $persist_buffer is reached.
@@ -156,7 +175,7 @@ class MainController extends AbstractController
                     }
                 }
                 $class = "App\\Entity\\" . $entName; //Entity address.
-                $ent = new $class($line, $doct); //Creating entity object $ent.
+                $ent = new $class($line,$em); //Creating entity object $ent.
                 $em->persist($ent); //Saving $end
 
                 $index++;
@@ -179,14 +198,13 @@ class MainController extends AbstractController
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        echo "done.<br>";
         fclose($file);
     }
 
     //Orders files according to Order.txt file. Such order must be used to import files without foreign keys first to avoid foreign key object search failures.
     public function OrderFiles($extractPath)
     {
-        $file = fopen("../FDCimportModule/Order.txt", "r") or die("Unable to read the file: FDCimportModule/Order.txt");
+        $file = fopen("FDCimportModule/Order.txt", "r") or die("Unable to read the file: FDCimportModule/Order.txt");
         $array = array(); //Array of entity names.
 
         while (!feof($file)) {

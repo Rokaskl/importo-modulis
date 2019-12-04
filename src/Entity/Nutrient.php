@@ -33,7 +33,7 @@ class Nutrient
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=5, nullable=true)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $unit_name;
 
