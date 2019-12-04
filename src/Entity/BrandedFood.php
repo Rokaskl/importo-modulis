@@ -45,37 +45,37 @@ class BrandedFood
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $brand_owner;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $gtin_upc;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ingredients;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $serving_size;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $serving_size_unit;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $household_serving_fulltext;
 
@@ -90,12 +90,12 @@ class BrandedFood
     private $data_source;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $modified_date;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $available_date;
 

@@ -42,18 +42,18 @@ class FoodAttribute
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $seq_num;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodAttributeType")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $food_attribute_type_id;
 

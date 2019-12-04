@@ -1,5 +1,5 @@
-1,MeasureUnit
-2,AllDownloadedTableRecordCounts
+1,AllDownloadedTableRecordCounts
+2,MeasureUnit
 3,FoodAttributeType
 4,FoodCategory
 5,FoodNutrientSource

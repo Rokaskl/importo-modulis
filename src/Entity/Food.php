@@ -73,7 +73,7 @@ class Food
     private $foodClass;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $data_type;
 
@@ -89,7 +89,7 @@ class Food
     // private $food_category_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $publication_date;
 
@@ -105,6 +105,7 @@ class Food
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodCategory")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $food_category_id;
 

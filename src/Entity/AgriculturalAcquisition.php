@@ -29,27 +29,27 @@ class AgriculturalAcquisition
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $acquisition_date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $market_class;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $treatment;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $state;
 

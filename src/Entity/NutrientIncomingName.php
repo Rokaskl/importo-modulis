@@ -27,12 +27,13 @@ class NutrientIncomingName
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Nutrient")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $nutrient_id;
 

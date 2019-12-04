@@ -25,12 +25,12 @@ class SrLegacyFood
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $NDB_number;
 

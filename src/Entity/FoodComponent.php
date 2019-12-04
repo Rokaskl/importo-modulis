@@ -38,32 +38,32 @@ class FoodComponent
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $pct_weight;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $is_refuse;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $gram_weight;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $data_points;
 

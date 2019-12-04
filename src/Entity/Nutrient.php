@@ -28,22 +28,22 @@ class Nutrient
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=5, nullable=true)
      */
     private $unit_name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $nutrient_nbr;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $rank;
 

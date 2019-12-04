@@ -29,12 +29,12 @@ class WweiaFoodCategory
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $wweia_food_category_code;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $wweia_food_category_description;
 

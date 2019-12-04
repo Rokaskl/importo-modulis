@@ -77,7 +77,7 @@ class MarketAcquisition
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
@@ -92,22 +92,22 @@ class MarketAcquisition
     private $expiration_date;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $label_weight;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $location;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $acquisition_date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sales_type;
 

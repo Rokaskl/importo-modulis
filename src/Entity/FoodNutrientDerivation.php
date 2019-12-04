@@ -44,7 +44,7 @@ class FoodNutrientDerivation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrientSource")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $source_id;
 

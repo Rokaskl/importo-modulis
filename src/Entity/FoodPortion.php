@@ -62,7 +62,7 @@ class FoodPortion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
@@ -78,7 +78,7 @@ class FoodPortion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\MeasureUnit")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $measure_unit_id;
 
@@ -93,7 +93,7 @@ class FoodPortion
     private $modifier;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $gram_weight;
 

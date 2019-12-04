@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
@@ -19,111 +21,190 @@ class MainController extends AbstractController
         ]);
     }
 
+    //Whole operation lasts ~70-90minutes.
+    //~80mins on i7 7700hq, 8gb ram ddr4 2,400MHz, 240gb sata3 ssd,
+    //~6 000 000 total records, ~1.2GB in database db = MariaDb; type = innoDB.
+    //2019-12-03
+
     /**
-     * @Route("/read", name="read")
+     * @Route("/get-db", name="create_db")
      */
-    public function read(){
-        set_time_limit(999999999);
+    public function create_db()
+    {
+        $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
+        $extractPath = "../FDCimportModule/files";
+        $timeout_after = 999999999;
+        $persist_buffer = 40000;
+        set_time_limit($timeout_after);
         $extractPath = "../FDCimportModule/files";
         //$all_file_paths = scandir ( $extractPath );
-        $all_file_paths = $this->OrderFiles( $extractPath );
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $doct = $this->getDoctrine();
-        //print_r($all_file_paths);
-        foreach($all_file_paths as $file_path){
-            $length = strlen($file_path);
-            $sql = "";
-            echo $file_path."<br>";
-            if(substr($file_path, $length - 4, $length) == ".csv"/* && $file_path == 'food_nutrient.csv'*/){
-                $file = fopen($extractPath."/".$file_path, "r") or die("Unable to read the file: ".$file_path);
-                $index = 0; 				// Line index
-        
-                $columns = fgetcsv($file); 	// Gets the first line with column names
-                
-                $table_name = substr($file_path, 0, strlen($file_path) - 4);
-                
-                echo "<h1>".$table_name."</h1><br>";
-                $entName = "";
-                foreach(explode("_", $table_name) as $substr){
-                    $entName = $entName. ucfirst($substr);
-                }
-                //echo "<h1>".$entName."</h1><br>";
-        
-        
-                
-                while(!feof($file)){
-                    
-                    $line = fgetcsv($file);
-                    if(!empty($line)){
-                        $class = "App\\Entity\\".$entName;
-                        $ent = new $class($line, $doct);
-                        //echo "<h1>" . $ent->getId() . "</h1>";
-                        $entityManager->persist($ent);
-                
-                        $index++;
-                        if($index == 10000){
-                            $index = 0;
-                            //CommitChanges();
-                            try{
-                                echo "flushing...<br>";
-                                $entityManager->flush();
-                                echo "---flushed...<br>";
-                            }
-                            catch(Exception $e){
-                                echo $e->getMessage();
-                            }
-                        }
-                    }
-                }
-
-                echo "flushing...<br>";
-
-                $entityManager->flush();
-                echo "done.<br>";
-                fclose($file);
-            }	
-            
-        }
+        $this->delete_current();
+        $this->download_extract_data($url, $extractPath);
+        $this->migrate_data_to_db($extractPath, $persist_buffer);
         return new Response("");
     }
-        
-        // function CommitChanges(){
-        //     echo "flushing...<br>";
-        //     flush();
+
+    //delete current data in database if such data exists.
+    private function delete_current()
+    {
+        // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
+        $pdown = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191203190634', '--down']);
+        $pdown->setInput('y');
+        $pdown->run();
+        // while ($pdown->isRunning()) {
+        //     // waiting for process to finish
         // }
+        
+        if (!$pdown->isSuccessful()) {
+            throw new ProcessFailedException($pdown);
+        }
+        $pup = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191203190634', '--up']);
+        $pup->setInput('y');
+        $pup->run();
+        if (!$pup->isSuccessful()) {
+            throw new ProcessFailedException($pup);
+        }
 
-    public function OrderFiles($extractPath){
-            $file = fopen("../FDCimportModule/Order.txt", "r") or die("Unable to read the file: FDCimportModule/Order.txt");
-           
-            $array = array();
+        //echo $process->getOutput();
+    }
 
-            while(!feof($file)){
-                $line = fgetcsv($file);
-                if(!empty($line)){
-                    array_push($array, $line[1]);
-                }
+    private function download_extract_data($url, $extractPath)
+    {
+        $zip_file = "../FDCimportModule/file.zip";
+        echo "Downloading Zip file...</br>";
+        if (!file_exists($extractPath)) {
+
+            $zip_resource = fopen($zip_file, "w");
+            $ch_start = curl_init();
+            curl_setopt($ch_start, CURLOPT_URL, $url);
+            curl_setopt($ch_start, CURLOPT_FAILONERROR, true);
+            curl_setopt($ch_start, CURLOPT_HEADER, 0);
+            curl_setopt($ch_start, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch_start, CURLOPT_AUTOREFERER, true);
+            curl_setopt($ch_start, CURLOPT_BINARYTRANSFER, true);
+            curl_setopt($ch_start, CURLOPT_TIMEOUT, 100);
+            curl_setopt($ch_start, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch_start, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch_start, CURLOPT_FILE, $zip_resource);
+            $page = curl_exec($ch_start);
+            if (!$page) {
+                echo "Error :- " . curl_error($ch_start);
             }
-            // echo "Nuskaityta:<br>";
-            // print_r($array);
-            // echo "<br>";
-            $all_file_paths = scandir ($extractPath);
-            $orderedArray = array();
-            foreach($all_file_paths as $file_path){
-                    
-                    $table_name = substr($file_path, 0, strlen($file_path) - 4);
-                    $entName = "";
-                    foreach(explode("_", $table_name) as $substr){
-                        $entName = $entName. ucfirst($substr);
+            curl_close($ch_start);
+
+            $zip = new \ZipArchive;
+            if ($zip->open($zip_file) != "true") {
+                echo "Error :- Unable to open the Zip File";
+            }
+            if ($zip->open($zip_file) == "true") {
+                echo "Zip downloaded successfuly</br>";
+
+            }
+
+            $zip->extractTo($extractPath);
+            $zip->close();
+            echo "Zip extracted successfuly</br>";
+            unlink($zip_file);
+            echo "Zip file deleted";
+        } else {
+            echo "folder already exists";
+        }
+    }
+
+    private function migrate_data_to_db($extractPath, $persist_buffer)
+    {
+        $all_file_paths = $this->OrderFiles($extractPath);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
+        $doct = $this->getDoctrine();
+        //print_r($all_file_paths);
+        foreach ($all_file_paths as $file_path) {
+            $length = strlen($file_path);
+            //echo $file_path . "<br>";
+            if (substr($file_path, $length - 4, $length) == ".csv" /* && $file_path == 'food_nutrient.csv'*/) {
+                $this->import($extractPath, $file_path, $entityManager, $doct, $persist_buffer);
+            }
+        }
+    }
+
+    //Converts csv file lines into entities and imports them into database.
+    private function import($extractPath, $file_path, $em, $doct, $persist_buffer)
+    {
+        $file = fopen($extractPath . "/" . $file_path, "r") or die("Unable to read the file: " . $file_path); //Gets the file in $file_path.
+        $index = 0; // Line index. Used to flush data periodically after $persist_buffer is reached.
+        $columns = fgetcsv($file); // Gets the first csv line with column names.
+        $table_name = substr($file_path, 0, strlen($file_path) - 4); //Converts csv file name into it's related table name in database.
+
+        //Converts csv file name($table_name) into entity name so entity contructor could be called.
+        $entName = "";
+        foreach (explode("_", $table_name) as $substr) {
+            $entName = $entName . ucfirst($substr);
+        }
+
+        //Reads all file lines, creates entity objects and flushes them into database.
+        while (!feof($file)) {
+
+            $line = fgetcsv($file);
+            if (!empty($line)) {
+                //Converts all empty data cells into nulls. Maybe empty string should be empty not null?
+                foreach ($line as $arg) {
+                    if (!isset($arg)) {
+                        $arg = null;
                     }
-                    $orderedArray[array_search($entName, $array)] = $file_path;
                 }
-            
-            // echo "Gavosi:<br>";
-            // print_r($orderedArray);
-            // echo "<br>";
-            ksort($orderedArray);
-            //print_r($orderedArray);
-            return $orderedArray;
+                $class = "App\\Entity\\" . $entName; //Entity address.
+                $ent = new $class($line, $doct); //Creating entity object $ent.
+                $em->persist($ent); //Saving $end
+
+                $index++;
+                if ($index == $persist_buffer) { //Partial commit
+                    $index = 0;
+                    //Commiting changes...
+                    try {
+                        $em->flush();
+                        $em->clear();
+                    } catch (Exception $e) {
+                        echo $e->getMessage();
+                    }
+                }
             }
+        }
+        //Commiting changes...
+        try {
+            $em->flush();
+            $em->clear();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        echo "done.<br>";
+        fclose($file);
+    }
+
+    //Orders files according to Order.txt file. Such order must be used to import files without foreign keys first to avoid foreign key object search failures.
+    public function OrderFiles($extractPath)
+    {
+        $file = fopen("../FDCimportModule/Order.txt", "r") or die("Unable to read the file: FDCimportModule/Order.txt");
+        $array = array(); //Array of entity names.
+
+        while (!feof($file)) {
+            $line = fgetcsv($file);
+            if (!empty($line)) {
+                array_push($array, $line[1]);
+            }
+        }
+        $all_file_paths = scandir($extractPath);
+        $orderedArray = array();
+        foreach ($all_file_paths as $file_path) {
+
+            $table_name = substr($file_path, 0, strlen($file_path) - 4);
+            $entName = "";
+            foreach (explode("_", $table_name) as $substr) {
+                $entName = $entName . ucfirst($substr);
+            }
+            $orderedArray[array_search($entName, $array)] = $file_path; //Inserts $file_path into possition according to order.txt file/$array.
+        }
+        ksort($orderedArray);
+        return $orderedArray;
+    }
 }

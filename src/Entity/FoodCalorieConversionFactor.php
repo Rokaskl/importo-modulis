@@ -28,22 +28,22 @@ class FoodCalorieConversionFactor
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrientConversionFactor")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $food_nutrient_conversion_factor_id;
 
     /**
-     * @ORM\Column(type="float", nullable=false)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $protein_value;
 
     /**
-     * @ORM\Column(type="float", nullable=false)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $fat_value;
 
     /**
-     * @ORM\Column(type="float", nullable=false)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $carbonhydrate_value;
 

@@ -39,7 +39,7 @@ class FoodUpdateLogEntry
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
@@ -49,7 +49,7 @@ class FoodUpdateLogEntry
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $publication_date;
 

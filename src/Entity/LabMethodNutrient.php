@@ -34,7 +34,7 @@ class LabMethodNutrient
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\LabMethod")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lab_method_id;
 

@@ -28,12 +28,12 @@ class LabMethodCode
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\LabMethod")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lab_method_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $code;
 

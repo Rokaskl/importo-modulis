@@ -26,13 +26,13 @@ class AcquisitionSample
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\SampleFood")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id_of_sample_food;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id_of_acquisition_food;
 

@@ -55,7 +55,7 @@ class SubSampleResult
     private $lab_method_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nutrient_name;
 
