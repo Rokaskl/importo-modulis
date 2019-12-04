@@ -38,7 +38,7 @@ class MigrationService
         $extractPath = "FDCimportModule/files";
         //$all_file_paths = scandir ( $extractPath );
 
-        //$this->delete_current();
+        $this->delete_current();
        $this->download_extract_data($url, $extractPath);
         $this->migrate_data_to_db($extractPath, $persist_buffer);
     }
@@ -48,7 +48,7 @@ class MigrationService
     {
         // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
 
-        $pdown = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191203190634', '--down']);
+        $pdown = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--down']);
         $pdown->setInput('y');
         $pdown->run();
         // while ($pdown->isRunning()) {
@@ -58,7 +58,7 @@ class MigrationService
         if (!$pdown->isSuccessful()) {
             throw new ProcessFailedException($pdown);
         }
-        $pup = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191203190634', '--up']);
+        $pup = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--up']);
         $pup->setInput('y');
         $pup->run();
         if (!$pup->isSuccessful()) {

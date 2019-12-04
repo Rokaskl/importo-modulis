@@ -50,7 +50,7 @@ class MainController extends AbstractController
     private function delete_current()
     {
         // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
-        $pdown = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191203190634', '--down']);
+        $pdown = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191204150950', '--down']);
         $pdown->setInput('y');
         $pdown->run();
         // while ($pdown->isRunning()) {
@@ -60,7 +60,7 @@ class MainController extends AbstractController
         if (!$pdown->isSuccessful()) {
             throw new ProcessFailedException($pdown);
         }
-        $pup = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191203190634', '--up']);
+        $pup = new Process(['php', '../bin/console', 'doctrine:migrations:execute', '20191204150950', '--up']);
         $pup->setInput('y');
         $pup->run();
         if (!$pup->isSuccessful()) {
