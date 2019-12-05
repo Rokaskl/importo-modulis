@@ -1,40 +1,21 @@
 <?php
-
-function read_files($dir)
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Food;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
+//include "../src/Entity/Food.php";
+class ReadController extends AbstractController
 {
-    $files = scandir ($dir);
-    $filtered_files = filter_files($files);
-    foreach ($filtered_files as $file) {
-        echo $file."</br>";
-    }
-}
-
-function read_file($file_name)
-{
-
-}
-
-function filter_files($file_array)
-{
-    $pattern = "/^.*\.(csv)$/i";
-    return preg_grep($pattern, $file_array);
-}
-function erase_files($dir)
-{
-    $fileSystem = new Symfony\Component\Filesystem();
-    $files = scandir ($dir);
-    $filtered_files = filter_files($files);
-    foreach ($filtered_files as $file) {
-        //chmod($file, 0644);
-        //unlink($dir.$file);
-    }
-}
-//--------------------------------------------------------------------
-/*$all_file_paths = scandir ( $extractPath );
+	
+	public function Read(){
+$extractPath = "../FDCimportModule/files";
+$all_file_paths = scandir ( $extractPath );
 //$dbc=mysqli_connect('localhost','root', '','Mdb');
 //if(!$dbc){die ("Failure:" .mysqli_error($dbc)); }
 
 // Reads directory for file paths
+$entityManager = $this->getDoctrine()->getManager();
+$doct = $this->getDoctrine();
 foreach($all_file_paths as $file_path){
 	$length = strlen($file_path);
 	$sql = "";
@@ -46,8 +27,8 @@ foreach($all_file_paths as $file_path){
 		$columns = fgetcsv($file); 	// Gets the first line with column names
 
 		$table_name = substr($file_path, 0, strlen($file_path) - 4);
-
-
+		$entName = str_replace($table_name, "_", "");
+		echo "<h1>".$entName."</h1><br>";
 
 
 		//$sql = $sql."CREATE TABLE ".$table_name." (";
@@ -66,6 +47,15 @@ foreach($all_file_paths as $file_path){
 		while(!feof($file)){
 
 			$line = fgetcsv($file);
+
+			//$entity = new Food();
+			//echo "entity first ".$entity->getDataType();
+
+			$class = "App\\Entity\\".$table_name;
+			$ent = new $class($line, $doct);
+			$entityManager->persist($ent);
+			//$entity2->Populate($line);
+			//echo "entity second ".$entity2->getDataType();
 			//print_r($line); echo "<br>";
 			//if(!feof($file))
 				//$sql = $sql."(".$line."),";
@@ -79,10 +69,11 @@ foreach($all_file_paths as $file_path){
 			$index++;
 			if($index == 5000){
 				$index = 0;
-				CommitChanges($sql, $dbc);
+				CommitChanges();
 				//$sql = "INSERT INTO ".$table_name." VALUES ";
 			}
 		}
+		CommitChanges();
 		//$sql = $sql.";";
 		print($sql); echo "<br>";
 
@@ -90,6 +81,7 @@ foreach($all_file_paths as $file_path){
 	}
 
 }
+	}
 
 function CommitChanges(){
 	//$result = mysqli_query($dbc, $sql);
@@ -99,4 +91,5 @@ function CommitChanges(){
 	flush();
 }
 //print_r($csv_file_paths)."<br>";
+}
 ?>

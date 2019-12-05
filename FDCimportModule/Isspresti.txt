@@ -1,0 +1,7 @@
+Kai nesutampa eiliskumas eilutes, nuskaitytos is csv su fieldais. Pvz.: kai fieldas yra, o csv faile tokio nera(Food entity).
+Kaip sutvarkyti, kad kontroleris kurtu lenteles pagal tvarka, kaip tvarka papildyti.
+Kaip elgtis, kai lenteles jau yra db sukurtos ir reikia jas atnaujinti, senas trinti? tikrinti eilutes?
+
+AcquisitionSample neaiskus fieldu relationai.
+
+db/table Timestamp?

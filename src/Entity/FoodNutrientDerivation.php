@@ -3,15 +3,32 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\FoodNutrientSource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodNutrientDerivationRepository")
  */
 class FoodNutrientDerivation
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->code = $args[1];
+        if(!isset($args[2])){
+            $this->description = null;
+        }
+        else{
+            $this->description = $args[2];
+        }
+        $this->source_id = $doctrine->getRepository(FoodNutrientSource::class)->Find($args[3]);
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -27,7 +44,7 @@ class FoodNutrientDerivation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrientSource")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $source_id;
 

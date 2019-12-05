@@ -3,12 +3,22 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\FoodNutrientConversionFactor;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodCalorieConversionFactorRepository")
  */
 class FoodCalorieConversionFactor
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->food_nutrient_conversion_factor_id = $doctrine->getRepository(FoodNutrientConversionFactor::class)->Find($args[0]);
+        $this->protein_value = $args[1];
+        $this->fat_value = $args[2];
+        $this->carbonhydrate_value = $args[3];
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,7 +28,7 @@ class FoodCalorieConversionFactor
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FoodNutrientConversionFactor")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $food_nutrient_conversion_factor_id;
 

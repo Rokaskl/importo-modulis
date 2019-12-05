@@ -3,12 +3,71 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MarketAcquisitionRepository")
  */
 class MarketAcquisition
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        if(!isset($args[1])){
+            $this->brand_description = null;
+        }
+        else{
+            $this->brand_description = $args[1];
+        }
+        if(!isset($args[2])){
+            $this->expiration_date = null;
+        }
+        else{
+            $this->expiration_date = new \DateTime($args[2]);
+        }
+        $this->label_weight = $args[3];
+        $this->location = $args[4];
+        $this->acquisition_date = new \DateTime($args[5]);
+        $this->sales_type = $args[6];
+        if(!isset($args[7])){
+            $this->sales_lot_nbr = null;
+        }
+        else{
+            $this->sales_lot_nbr = $args[7];
+        }
+        if(!isset($args[8])){
+            $this->sell_by_date = null;
+        }
+        else{
+            $this->sell_by_date = new \DateTime($args[8]);
+        }
+        if(!isset($args[9])){
+            $this->store_city = null;
+        }
+        else{
+            $this->store_city = $args[9];
+        }
+        if(!isset($args[10])){
+            $this->store_name = null;
+        }
+        else{
+            $this->store_name = $args[10];
+        }
+        if(!isset($args[11])){
+            $this->store_state = null;
+        }
+        else{
+            $this->store_state = $args[11];
+        }
+        if(!isset($args[12])){
+            $this->upc_code = null;
+        }
+        else{
+            $this->upc_code = $args[12];
+        }
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,7 +77,7 @@ class MarketAcquisition
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
@@ -33,22 +92,22 @@ class MarketAcquisition
     private $expiration_date;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $label_weight;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $location;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $acquisition_date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sales_type;
 

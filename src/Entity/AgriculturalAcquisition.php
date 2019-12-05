@@ -3,12 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AgriculturalAcquisitionRepository")
  */
 class AgriculturalAcquisition
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        $this->acquisition_date = new \DateTime($args[1]);
+        $this->market_class = $args[2];
+        $this->treatment = $args[3];
+        $this->state = $args[4];
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,27 +29,27 @@ class AgriculturalAcquisition
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $acquisition_date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $market_class;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $treatment;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $state;
 

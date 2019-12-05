@@ -9,6 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AllDownloadedTableRecordCounts
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->tbl = $args[0];
+        $this->number_of_records = $args[1];
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -17,12 +24,12 @@ class AllDownloadedTableRecordCounts
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tbl;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $number_of_records;
 

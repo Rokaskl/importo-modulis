@@ -9,14 +9,30 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeasureUnit
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->name = $args[1];
+        if(!isset($args[2])){
+            $this->abbreviation = null;
+        }
+        else{
+            $this->abbreviation = $args[2];
+        }
+        //abbreviation nera csv faile
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 

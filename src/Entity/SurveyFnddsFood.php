@@ -3,12 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SurveyFnddsFoodRepository")
  */
 class SurveyFnddsFood
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->find($args[0]);
+        $this->food_code = $args[1];
+        $this->wweia_category_code = $args[2];
+        $this->start_date = new \DateTime($args[3]);
+        $this->end_date = new \DateTime($args[4]);
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,27 +29,27 @@ class SurveyFnddsFood
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     private $food_code;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $wweia_category_code;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $start_date;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $end_date;
 

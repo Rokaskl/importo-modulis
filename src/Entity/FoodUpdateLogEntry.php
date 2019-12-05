@@ -3,21 +3,43 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodUpdateLogEntryRepository")
  */
 class FoodUpdateLogEntry
 {
+    //TODO:
+    //NEAISKU
+    //fdc_id?? csv faile nera
+    //csv faile yra last_updated cia ne
+    //csv faile nera publication date
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        if(!isset($args[1])){
+            $this->description = null;
+        }
+        else{
+            $this->description = $args[1];
+        }
+        $this->publication_date = new \DateTime($args[2]);
+        
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue()
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
@@ -27,7 +49,7 @@ class FoodUpdateLogEntry
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $publication_date;
 

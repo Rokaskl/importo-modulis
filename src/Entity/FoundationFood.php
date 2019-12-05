@@ -3,12 +3,31 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoundationFoodRepository")
  */
 class FoundationFood
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        if(!isset($args[1])){
+            $this->NDB_number = null;
+        }
+        else{
+            $this->NDB_number = $args[1];
+        }
+        if(!isset($args[2])){
+            $this->footnote = null;
+        }
+        else{
+            $this->footnote = $args[2];
+        }
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,7 +37,7 @@ class FoundationFood
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 

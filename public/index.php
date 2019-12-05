@@ -3,7 +3,8 @@
 use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
-
+//use App\FDCimportModule\importMain;
+include "../FDCimportModule/importMain.php";
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
@@ -27,7 +28,10 @@ $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
 
-// Basically, we don't need to come here again
-include "../FDCimportModule/importMain.php";
+
+//include "../FDCimportModule/test.php";
+//include "../FDCimportModule/fileDownload.php";
+
 importMain::updateDB();
+
 

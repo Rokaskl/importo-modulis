@@ -3,12 +3,39 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Food;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BrandedFoodRepository")
  */
 class BrandedFood
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->fdc_id = $doctrine->getRepository(Food::class)->Find($args[0]);
+        $this->brand_owner = $args[1];
+        $this->gtin_upc = $args[2];
+        $this->ingredients = $args[3];
+        $this->serving_size = $args[4];
+        $this->serving_size_unit = $args[5];
+        $this->household_serving_fulltext = $args[6];
+        if(!isset($args[7])){
+            $this->branded_food_category = null;
+        }
+        else{
+            $this->branded_food_category = $args[7];
+        }
+        if(!isset($args[8])){
+            $this->data_source = null;
+        }
+        else{
+            $this->data_source = $args[8];
+        }
+        $this->modified_date = new \DateTime($args[9]);
+        $this->available_date = new \DateTime($args[10]);
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,37 +45,37 @@ class BrandedFood
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Food")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fdc_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $brand_owner;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $gtin_upc;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ingredients;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $serving_size;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $serving_size_unit;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $household_serving_fulltext;
 
@@ -63,12 +90,12 @@ class BrandedFood
     private $data_source;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $modified_date;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $available_date;
 

@@ -3,26 +3,37 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\LabMethod;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LabMethodCodeRepository")
  */
 class LabMethodCode
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->lab_method_id = $doctrine->getRepository(LabMethod::class)->find($args[1]);
+        $this->code = $args[2];
+    }
+
+     /**
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\LabMethod")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lab_method_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $code;
 

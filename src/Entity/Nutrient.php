@@ -9,26 +9,43 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Nutrient
 {
+
+    public function __construct($args, $doctrine)
+    {
+        $this->id = $args[0];
+        $this->name = $args[1];
+        $this->unit_name = $args[2];
+        $this->nutrient_nbr = $args[3];
+        $this->rank = $args[4];
+    }
+
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $unit_name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $nutrient_nbr;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rank;
 
     public function getId(): ?int
     {
@@ -67,6 +84,18 @@ class Nutrient
     public function setNutrientNbr(float $nutrient_nbr): self
     {
         $this->nutrient_nbr = $nutrient_nbr;
+
+        return $this;
+    }
+
+    public function getRank(): ?int
+    {
+        return $this->rank;
+    }
+
+    public function setRank(int $rank): self
+    {
+        $this->rank = $rank;
 
         return $this;
     }
