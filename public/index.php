@@ -3,10 +3,8 @@
 use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
-//use App\FDCimportModule\importMain;
-include "../FDCimportModule/importMain.php";
 
-require dirname(__DIR__).'/config/bootstrap.php';
+require dirname(__DIR__) . '/config/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
@@ -27,11 +25,3 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
-
-
-//include "../FDCimportModule/test.php";
-//include "../FDCimportModule/fileDownload.php";
-
-importMain::updateDB();
-
-
