@@ -6,4 +6,6 @@
 /public/bundles/
 /var/
 /vendor/
+/.idea/
+/FDCimportModule/files/
 ###< symfony/framework-bundle ###
