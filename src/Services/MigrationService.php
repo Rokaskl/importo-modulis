@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Doctrine\ORM\EntityManagerInterface;
 use mysql_xdevapi\Exception;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -26,22 +27,24 @@ class MigrationService
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
+
     }
 
-    public function create_db()
+    public function create_db($filesPath)
     {
 
+
         $url = "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_csv_2019-10-11.zip";
-        $extractPath = "FDCimportModule/files";
+
+
         $timeout_after = 999999999;
         $persist_buffer = 40000;
         set_time_limit($timeout_after);
-        $extractPath = "FDCimportModule/files";
         //$all_file_paths = scandir ( $extractPath );
 
         $this->delete_current();
-       $this->download_extract_data($url, $extractPath);
-      $this->migrate_data_to_db($extractPath, $persist_buffer);
+       $this->download_extract_data($url, $filesPath);
+      $this->migrate_data_to_db($filesPath, $persist_buffer);
     }
 
     //delete current data in database if such data exists.
@@ -98,13 +101,14 @@ class MigrationService
 
     }
 
-    private function download_extract_data($url, $extractPath)
+    private function download_extract_data($url, $filesPath)
     {
-        $zip_file = "FDCimportModule/file.zip";
+        $zip_file = $filesPath;
+        $extractPath = $filesPath."/files";
         echo "Downloading Zip file...\n";
         if (!file_exists($extractPath)) {
 
-            $zip_resource = fopen($zip_file, "w");
+            $zip_resource = fopen($zip_file, "w+");
             $ch_start = curl_init();
             curl_setopt($ch_start, CURLOPT_URL, $url);
             curl_setopt($ch_start, CURLOPT_FAILONERROR, true);
@@ -141,7 +145,7 @@ class MigrationService
         }
     }
 
-    private function migrate_data_to_db($extractPath, $persist_buffer)
+    private function migrate_data_to_db($filesPath, $persist_buffer)
     {
         //----------MIGRATION LOADING BAR-----------------------------------------
         $section1 = new ConsoleOutput();
@@ -158,6 +162,7 @@ class MigrationService
 
         //------------------------------------------------------------------------
 
+        $extractPath = $filesPath.'\files';
         $all_file_paths = $this->OrderFiles($extractPath);
 
         $entityManager = $this->em;

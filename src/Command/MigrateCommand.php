@@ -38,7 +38,7 @@ class MigrateCommand extends Command
 
 
 
-        $this->migrationService ->create_db();
+        $this->migrationService ->create_db("FDCimportModule");
         $io->success('Migration was successful!');
 
         return 0;
