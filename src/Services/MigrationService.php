@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Doctrine\ORM\EntityManagerInterface;
+use mysql_xdevapi\Exception;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -46,24 +47,72 @@ class MigrationService
     //delete current data in database if such data exists.
     private function delete_current()
     {
-        // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
+        $conn = $this->em->getConnection();
+         $sql =
+            "  
+            SET FOREIGN_KEY_CHECKS = 0; 
+            TRUNCATE `acquisition_sample`;
+            TRUNCATE `agricultural_acquisition`;
+            TRUNCATE `all_downloaded_table_record_counts`;
+            TRUNCATE `branded_food`;
+            TRUNCATE `food`;
+            TRUNCATE `food_attribute`;
+            TRUNCATE `food_attribute_type`;
+            TRUNCATE `food_calorie_conversion_factor`;
+            TRUNCATE `food_category`;
+            TRUNCATE `food_component`;
+            TRUNCATE `food_nutrient`;
+            TRUNCATE `food_nutrient_conversion_factor`;
+            TRUNCATE `food_nutrient_derivation`;
+            TRUNCATE `food_nutrient_source`;
+            TRUNCATE `food_portion`;
+            TRUNCATE `food_protein_conversion_factor`;
+            TRUNCATE `food_update_log_entry`;
+            TRUNCATE `foundation_food`;
+            TRUNCATE `input_food`;
+            TRUNCATE `lab_method`;
+            TRUNCATE `lab_method_code`;
+            TRUNCATE `lab_method_nutrient`;
+            TRUNCATE `market_acquisition`;
+            TRUNCATE `measure_unit`;
+            TRUNCATE `migration_versions`;
+            TRUNCATE `nutrient`;
+            TRUNCATE `nutrient_incoming_name`;
+            TRUNCATE `retention_factor`;
+            TRUNCATE `sample_food`;
+            TRUNCATE `sr_legacy_food`;
+            TRUNCATE `sub_sample_food`;
+            TRUNCATE `sub_sample_result`;
+            TRUNCATE `survey_fndds_food`;
+            TRUNCATE `wweia_food_category`;
+            SET FOREIGN_KEY_CHECKS = 1; ";
 
-        $pdown = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--down']);
-        $pdown->setInput('y');
-        $pdown->run();
-        // while ($pdown->isRunning()) {
-        //     // waiting for process to finish
-        // }
-        
-        if (!$pdown->isSuccessful()) {
-            throw new ProcessFailedException($pdown);
-        }
-        $pup = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--up']);
-        $pup->setInput('y');
-        $pup->run();
-        if (!$pup->isSuccessful()) {
-            throw new ProcessFailedException($pup);
-        }
+         try {
+             $stmt = $conn->prepare($sql);
+             $stmt->execute();
+         }
+         catch (Exception $e) {
+             echo 'Caught exception: ',  $e->getMessage(), "\n";
+         }
+
+        // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
+//
+//        $pdown = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--down']);
+//        $pdown->setInput('y');
+//        $pdown->run();
+//        // while ($pdown->isRunning()) {
+//        //     // waiting for process to finish
+//        // }
+//
+//        if (!$pdown->isSuccessful()) {
+//            throw new ProcessFailedException($pdown);
+//        }
+//        $pup = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--up']);
+//        $pup->setInput('y');
+//        $pup->run();
+//        if (!$pup->isSuccessful()) {
+//            throw new ProcessFailedException($pup);
+//        }
 
     }
 
