@@ -36,16 +36,10 @@ class MigrateCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $arg1 = $input->getArgument('arg1');
 
-        if ($arg1) {
-            $io->note(sprintf('You passed an argument: %s', $arg1));
-        }
 
-        if ($input->getOption('option1')) {
-            // ...
-        }
 
         $this->migrationService ->create_db();
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        $io->success('Migration was successful!');
 
         return 0;
     }

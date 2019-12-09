@@ -41,15 +41,16 @@ class MigrationService
 
         $this->delete_current();
        $this->download_extract_data($url, $extractPath);
-        $this->migrate_data_to_db($extractPath, $persist_buffer);
+      $this->migrate_data_to_db($extractPath, $persist_buffer);
     }
 
     //delete current data in database if such data exists.
     private function delete_current()
     {
         $conn = $this->em->getConnection();
-         $sql =
-            "  
+        $conn->beginTransaction();
+        try {
+            $conn->query( "  
             SET FOREIGN_KEY_CHECKS = 0; 
             TRUNCATE `acquisition_sample`;
             TRUNCATE `agricultural_acquisition`;
@@ -85,34 +86,15 @@ class MigrationService
             TRUNCATE `sub_sample_result`;
             TRUNCATE `survey_fndds_food`;
             TRUNCATE `wweia_food_category`;
-            SET FOREIGN_KEY_CHECKS = 1; ";
+            SET FOREIGN_KEY_CHECKS = 1; ");
+            $conn->commit();
+            $this->em->flush();
 
-         try {
-             $stmt = $conn->prepare($sql);
-             $stmt->execute();
-         }
-         catch (Exception $e) {
-             echo 'Caught exception: ',  $e->getMessage(), "\n";
-         }
-
-        // php bin/console doctrine:migrations:status    return last migration. should get its number to input into args arrays just incase...
-//
-//        $pdown = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--down']);
-//        $pdown->setInput('y');
-//        $pdown->run();
-//        // while ($pdown->isRunning()) {
-//        //     // waiting for process to finish
-//        // }
-//
-//        if (!$pdown->isSuccessful()) {
-//            throw new ProcessFailedException($pdown);
-//        }
-//        $pup = new Process(['php', 'bin/console', 'doctrine:migrations:execute', '20191204150950', '--up']);
-//        $pup->setInput('y');
-//        $pup->run();
-//        if (!$pup->isSuccessful()) {
-//            throw new ProcessFailedException($pup);
-//        }
+        }
+        catch (\Exception $e) {
+            echo"Truncating tables failed \n";
+            $conn->rollback();
+        }
 
     }
 
